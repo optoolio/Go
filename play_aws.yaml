@@ -1,0 +1,10 @@
+---
+- name: Create S3 bucket as spec'ed.
+  hosts: all
+  vars:
+    bucket_name: "www.realname1234.com"
+  tags: create_s3_bucket
+  connection: local
+  tasks:
+    - name: create the bucket for promere db backups
+      s3: region=us-east-1 bucket={{ bucket_name }} mode=create permission=public-read
