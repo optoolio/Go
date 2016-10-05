@@ -1,0 +1,7 @@
+[lab]
+lab.optool.io
+
+[lab:vars]
+ansible_user=
+ansible_host=
+ansible_port=22

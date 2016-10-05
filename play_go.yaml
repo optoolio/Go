@@ -1,0 +1,22 @@
+---
+- name: Provision the lab server.
+  hosts: lab,web
+  gather_facts: true
+  vars:
+    jenkins_http_port: 8080
+  sudo: true
+  pre_tasks:
+  tasks:
+
+    - name: install ntp
+      apt: name=ntp
+
+    - name: set timezone to America/Los_Angeles
+      timezone: name=America/Los_Angeles
+      tags: time
+
+    - name: Install fail2ban
+      apt: pkg=fail2ban state=latest update_cache=yes
+
+  roles:
+    #- { role: bastion,                tags: ["bastion"]                   }
